@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án blog cá nhân</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #ff6f91, #ffc3a0, #ffde7d, #c3f584);
+            background-size: 800% 800%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 0%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .info strong {
+            color: #ffc3a0;
+        }
+
+        .contact {
+            margin-top: 20px;
+        }
+
+        .contact a {
+            color: #ffde7d;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .list-container {
+            margin-top: 30px;
+        }
+
+        .list-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .list-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .item-content {
+            display: none;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .cursor {
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor"></div>
+
+    <div class="blog-container">
+        <h1>Dự án blog cá nhân</h1>
+        <div class="info">
+            <p><strong>Tên:</strong> Anh Khang</p>
+            <p><strong>Biệt danh:</strong> Junn</p>
+            <p><strong>Ngày sinh:</strong> 16/12/2009</p>
+            <p><strong>Lov:</strong> 1610316</p>
+        </div>
+        <div class="contact">
+            <h2>Liên hệ</h2>
+            <p><strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61552407172188" target="_blank">Facebook của Junn</a></p>
+            <p><strong>Zalo:</strong> 0333235141</p>
+        </div>
+        <div class="list-container">
+            <div class="list-item" onclick="toggleContent(this)">Thông tin cá nhân
+                <div class="item-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+            <div class="list-item" onclick="toggleContent(this)">Dự án
+                <div class="item-content">Curabitur vel urna nec tortor sodales fermentum.</div>
+            </div>
+            <div class="list-item" onclick="toggleContent(this)">Sở thích
+                <div class="item-content">Aenean congue nisl vel justo volutpat scelerisque.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hiệu ứng con trỏ chuột
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.left = e.clientX + 'px';
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+
+        // Hiển thị nội dung từng ô
+        function toggleContent(item) {
+            const content = item.querySelector('.item-content');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
